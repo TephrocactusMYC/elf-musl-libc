@@ -27,13 +27,22 @@ hidden long __syscall_ret(unsigned long),
 	__syscall_cp(syscall_arg_t, syscall_arg_t, syscall_arg_t, syscall_arg_t,
 	             syscall_arg_t, syscall_arg_t, syscall_arg_t);
 
-#define __syscall1(n,a) __syscall1(n,__scc(a))
-#define __syscall2(n,a,b) __syscall2(n,__scc(a),__scc(b))
-#define __syscall3(n,a,b,c) __syscall3(n,__scc(a),__scc(b),__scc(c))
-#define __syscall4(n,a,b,c,d) __syscall4(n,__scc(a),__scc(b),__scc(c),__scc(d))
-#define __syscall5(n,a,b,c,d,e) __syscall5(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e))
-#define __syscall6(n,a,b,c,d,e,f) __syscall6(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e),__scc(f))
-#define __syscall7(n,a,b,c,d,e,f,g) __syscall7(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e),__scc(f),__scc(g))
+extern long (*__syscall_stub0)(long);
+extern long (*__syscall_stub1)(long, long);
+extern long (*__syscall_stub2)(long, long, long);
+extern long (*__syscall_stub3)(long, long, long, long);
+extern long (*__syscall_stub4)(long, long, long, long, long);
+extern long (*__syscall_stub5)(long, long, long, long, long, long);
+extern long (*__syscall_stub6)(long, long, long, long, long, long, long);
+
+#define __syscall0(n) __syscall_stub0(n)
+#define __syscall1(n,a) __syscall_stub1(n,__scc(a))
+#define __syscall2(n,a,b) __syscall_stub2(n,__scc(a),__scc(b))
+#define __syscall3(n,a,b,c) __syscall_stub3(n,__scc(a),__scc(b),__scc(c))
+#define __syscall4(n,a,b,c,d) __syscall_stub4(n,__scc(a),__scc(b),__scc(c),__scc(d))
+#define __syscall5(n,a,b,c,d,e) __syscall_stub5(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e))
+#define __syscall6(n,a,b,c,d,e,f) __syscall_stub6(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e),__scc(f))
+#define __syscall7(n,a,b,c,d,e,f,g) __syscall_stub7(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e),__scc(f),__scc(g))
 
 #define __SYSCALL_NARGS_X(a,b,c,d,e,f,g,h,n,...) n
 #define __SYSCALL_NARGS(...) __SYSCALL_NARGS_X(__VA_ARGS__,7,6,5,4,3,2,1,0,)
