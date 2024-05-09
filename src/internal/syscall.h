@@ -56,13 +56,13 @@ extern long (*__syscall_stub6)(long, long, long, long, long, long, long);
 #define socketcall(nm,a,b,c,d,e,f) __syscall_ret(__socketcall(nm,a,b,c,d,e,f))
 #define socketcall_cp(nm,a,b,c,d,e,f) __syscall_ret(__socketcall_cp(nm,a,b,c,d,e,f))
 
-#define __syscall_cp0(n) (__syscall_cp)(n,0,0,0,0,0,0)
-#define __syscall_cp1(n,a) (__syscall_cp)(n,__scc(a),0,0,0,0,0)
-#define __syscall_cp2(n,a,b) (__syscall_cp)(n,__scc(a),__scc(b),0,0,0,0)
-#define __syscall_cp3(n,a,b,c) (__syscall_cp)(n,__scc(a),__scc(b),__scc(c),0,0,0)
-#define __syscall_cp4(n,a,b,c,d) (__syscall_cp)(n,__scc(a),__scc(b),__scc(c),__scc(d),0,0)
-#define __syscall_cp5(n,a,b,c,d,e) (__syscall_cp)(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e),0)
-#define __syscall_cp6(n,a,b,c,d,e,f) (__syscall_cp)(n,__scc(a),__scc(b),__scc(c),__scc(d),__scc(e),__scc(f))
+#define __syscall_cp0 __syscall0
+#define __syscall_cp1 __syscall1
+#define __syscall_cp2 __syscall2
+#define __syscall_cp3 __syscall3
+#define __syscall_cp4 __syscall4
+#define __syscall_cp5 __syscall5
+#define __syscall_cp6 __syscall6
 
 #define __syscall_cp(...) __SYSCALL_DISP(__syscall_cp,__VA_ARGS__)
 #define syscall_cp(...) __syscall_ret(__syscall_cp(__VA_ARGS__))
